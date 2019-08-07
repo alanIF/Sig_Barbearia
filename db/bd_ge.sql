@@ -6,6 +6,8 @@ create table usuario(
 	nome varchar(200) not null,
 	email varchar(200) not null,
 	password varchar(200) not null,
+	telefone text,
+	foto text,
 	tipo int,
 	primary key(id)
 );
@@ -36,9 +38,9 @@ create table horario(
 	dia text ,
 	horario text,
 	situacao text,
-	id_dono int not null,
+	id_estabelecimento int not null,
 	id_cliente int,
 	primary key(id),
-	foreign key(id_dono) references usuario(id)
+	foreign key(id_estabelecimento) references estabelecimento(id)
 );
 
