@@ -39,26 +39,34 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Bem Vindo ao SigBarber</h1>
                   </div>
-                  <form class="user">
+                   
+                  <form class="user"  role='form' action='' method='post' enctype="multipart/form-data">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email">
+                        <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email" required="">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Senha">
+                        <input type="password" name="senha" class="form-control form-control-user" id="exampleInputPassword" placeholder="Senha" required="">
                     </div>
                    
-                    <a href="home.php" class="btn btn-primary btn-user btn-block">
-                      Entrar
-                    </a>
-                    <hr>
+                      <button type="submit" class="btn btn-primary btn-user btn-block" name="botao">Entrar</button>
+                       </form>
+
+                     <?php         
+
+                        if (isset($_POST["botao"])) {
+                           require_once 'Model/connect.php';   
+                           require_once './Controller/UsuarioController.php';
+                           $objControl = new UsuarioController();
+                           $objControl->Login($_POST["email"], $_POST["senha"]);
+                   }
+                    ?>
                    
-                  </form>
                   <hr>
                   <div class="text-center">
                     <a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
                   </div>
                   <div class="text-center">
-                    <a class="small" href="register.html">Criar uma conta!</a>
+                    <a class="small" href="register.php">Criar uma conta!</a>
                   </div>
                 </div>
               </div>

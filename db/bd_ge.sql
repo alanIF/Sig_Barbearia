@@ -5,7 +5,7 @@ create table usuario(
 	id int auto_increment not null,
 	nome varchar(200) not null,
 	email varchar(200) not null,
-	password varchar(200) not null,
+	senha varchar(200) not null,
 	telefone text,
 	foto text,
 	tipo int,
