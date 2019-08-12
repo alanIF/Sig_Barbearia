@@ -4,8 +4,8 @@
         require_once './Controller/UsuarioController.php';
         $objControl = new UsuarioController();
         $objControl->verificarlogin();
-
-        
+        $tipo=  permissao();
+                   
     ?>
 <html lang="pt-bR">
 
@@ -25,7 +25,18 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script type="text/javascript">
+      function confirmar(){
+        // só permitirá o envio se o usuário responder OK
+        var resposta = window.confirm("Deseja mesmo" + 
+                       " excluir este registro?");
+        if(resposta)
+          return true;
+        else
+          return false; 
+      }
+    </script>
 </head>
 
 <body id="page-top">
@@ -66,12 +77,24 @@
    
 
       
-
-      <li class="nav-item">
+      <?php 
+        if($tipo==1){
+            echo ' <li class="nav-item">
+        <a class="nav-link" href="EST_listar.php">
+          <i class="fas fa-fw fa-home"></i>
+          <span>Gerenciar Estabelecimento</span></a>
+      </li>
+';
+        }
+        if($tipo==2){
+            echo ' <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-clock"></i>
-          <span>Horários</span></a>
-      </li>
+          <span>Meus Horários Reservados</span></a>
+      </li>';
+        }
+      ?>
+     
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

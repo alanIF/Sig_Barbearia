@@ -19,7 +19,6 @@ create table usuario(
 	observacao tabela horario
 	situacao =0 - Horario Livre
 	situacao = 1 - Horario Reservado
-	situacao = 2 - Horario Confirmado
 	
 **/
 
@@ -37,7 +36,7 @@ create table horario(
 	id int auto_increment not null,
 	dia text ,
 	horario text,
-	situacao text,
+	situacao int,
 	id_estabelecimento int not null,
 	id_cliente int,
 	primary key(id),

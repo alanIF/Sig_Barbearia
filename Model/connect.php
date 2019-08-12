@@ -37,10 +37,10 @@ window.location.href = 'javascript:window.history.go(-1);';
         
     }
     function permissao(){
-    if($_SESSION['permissao']==1){
-        return TRUE;
+    if($_SESSION['tipo']==1){
+        return 1;
     }
-    return FALSE;
+    return 2;
 }
     
     

@@ -10,13 +10,14 @@ function logar($email, $senha) {
 
         while ($row = $result->fetch_assoc()) {
             $id_usuario = $row["id"];
-            $admin=$row['tipo'];
+            $tipo=$row['tipo'];
             $nome=$row['nome'];
         }
         //fim teste
         $_SESSION['nome']=$nome;
         $_SESSION['usuario'] = $email;
         $_SESSION['id_usuario'] = $id_usuario;
+        $_SESSION['tipo']=$tipo;
         $_SESSION['ativo'] = true;
        
      
