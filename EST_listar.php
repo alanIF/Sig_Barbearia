@@ -1,5 +1,12 @@
 <?php 
     include("head.php");
+    if ($tipo!=1){
+                              echo "<script language= 'JavaScript'>
+
+                                        location.href='./error403.php'
+
+                                </script>";
+                        }
 ?>
 
         <!-- Begin Page Content -->
