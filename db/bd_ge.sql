@@ -19,7 +19,7 @@ create table usuario(
 	observacao tabela horario
 	situacao =0 - Horario Livre
 	situacao = 1 - Horario Reservado
-	
+	situacao = 2 - Horário Confirmado
 **/
 
 create table estabelecimento (

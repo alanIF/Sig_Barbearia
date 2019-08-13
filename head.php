@@ -36,6 +36,24 @@
         else
           return false; 
       }
+       function reservar(){
+        // só permitirá o envio se o usuário responder OK
+        var resposta = window.confirm("Deseja mesmo" + 
+                       " reservar este horário?");
+        if(resposta)
+          return true;
+        else
+          return false; 
+      }
+      function cancelar(){
+        // só permitirá o envio se o usuário responder OK
+        var resposta = window.confirm("Deseja mesmo" + 
+                       " cancelar esta reserva?");
+        if(resposta)
+          return true;
+        else
+          return false; 
+      }
     </script>
 </head>
 
@@ -88,9 +106,9 @@
         }
         if($tipo==2){
             echo ' <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="HOR_listar.php">
           <i class="fas fa-fw fa-clock"></i>
-          <span>Meus Horários Reservados</span></a>
+          <span>Horários Reservados</span></a>
       </li>';
         }
       ?>

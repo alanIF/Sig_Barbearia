@@ -17,6 +17,7 @@ class EstabelecimentoController {
         require_once './Model/Estabelecimento.php';
         return listarHorarios($id_usuario);
     }
+   
     public function getEstabelecimento($id_usuario){
         require_once './Model/Estabelecimento.php';
         return getEstabelecimento($id_usuario);
