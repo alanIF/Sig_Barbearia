@@ -24,7 +24,7 @@ window.location.href = 'javascript:window.history.go(-1);';
         }
     }  
     
-    function Alert($titulo, $corpo, $tipo){
+   function Alert($titulo, $corpo, $tipo){
                                     echo "<br/><hr>";
 
         echo ' <div class="card shadow mb-4 ">
@@ -36,6 +36,7 @@ window.location.href = 'javascript:window.history.go(-1);';
         
         
     }
+
     function permissao(){
     if($_SESSION['tipo']==1){
         return 1;

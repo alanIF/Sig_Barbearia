@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
 
@@ -36,36 +36,31 @@
               <div class="col-lg-12">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Bem Vindo ao SigBarber</h1>
+                    <h1 class="h4 text-gray-900 mb-2">Esqueceu a senha?</h1>
+                    <p class="mb-4">Digite seu endereço de e-mail abaixo e lhe enviaremos um link para redefinir sua senha!</p>
                   </div>
-                   
-                  <form class="user"  role='form' action='' method='post' enctype="multipart/form-data">
+                  <form class="user" action='' method='post' enctype="multipart/form-data">
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email" required="">
+                      <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Insira o endereço de email..." required>
                     </div>
-                    <div class="form-group">
-                        <input type="password" name="senha" class="form-control form-control-user" id="exampleInputPassword" placeholder="Senha" required="">
-                    </div>
-                   
-                      <button type="submit" class="btn btn-primary btn-user btn-block" name="botao">Entrar</button>
-                       </form>
+                    
+                    <button type="submit" class="btn btn-primary btn-user btn-block" name="botao">Redefinir Senha</button>
+                  </form>
 
-                     <?php         
-
-                        if (isset($_POST["botao"])) {
-                           require_once 'Model/connect.php';   
-                           require_once './Controller/UsuarioController.php';
-                           $objControl = new UsuarioController();
-                           $objControl->Login($_POST["email"], $_POST["senha"]);
-                   }
-                    ?>
-                   
+                  <?php         
+                    if (isset($_POST["botao"])) {
+                       require_once 'Model/connect.php';   
+                       require_once './Controller/UsuarioController.php';
+                       $objControl = new UsuarioController();
+                       $objControl->redefinirSenha($_POST["email"]);
+                    }
+                  ?>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="senha.php">Esqueceu sua senha?</a>
+                    <a class="small" href="register.php">Criar uma conta!</a>
                   </div>
                   <div class="text-center">
-                    <a class="small" href="register.php">Criar uma conta!</a>
+                    <a class="small" href="index.php">Já tem uma conta? Login!</a>
                   </div>
                 </div>
               </div>

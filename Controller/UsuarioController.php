@@ -26,5 +26,18 @@ class UsuarioController{
     public function atualizar($nome,$email,$senha,$telefone,$id) {
         editarUsu($nome,$email,$senha,$telefone,$id);
     }
+    public function redefinirSenha($email){
+       require_once ('./Model/Usuario.php');
+       
+       $user = findUserByEmail($email);
+
+       if($user[0]['nome'] != null){
+            Alert("Oba!", "Email enviado com sucesso!", "success");  
+            //enviarEmail($user);
+       }else{
+            Alert("Ops!", "Não existe usuário com o email informado...", "danger");  
+       }
+
+    }  
 }
 
