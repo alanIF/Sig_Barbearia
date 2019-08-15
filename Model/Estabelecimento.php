@@ -49,11 +49,15 @@ function getEstabelecimento($id_usuario){
     if (mysqli_num_rows($result)) {
         while ($row = $result->fetch_assoc()) {
                 $estabelecimento[$i]['id'] = $row['id'];
+                $estabelecimento[$i]['descricao'] = $row['descricao'];
+                $estabelecimento[$i]['endereco'] = $row['endereco'];
+                $estabelecimento[$i]['nome'] = $row['nome'];
+                
                 $i++;
             }
     }
    $conn->close();
-   return $estabelecimento[0]['id'];
+   return $estabelecimento;
 }
 function cadastrarHorario($data,$horario,$id_estabelecimento){
     $conn = F_conect();
@@ -72,6 +76,17 @@ function atualizarHorario($data,$horario,$id){
     $sql = "update horario set dia='".$data."' , horario='".$horario."' where id='".$id."'";
     if ($conn->query($sql) == TRUE) {
         Alert("Sucesso!", "Horário atualizado com sucesso", "success");
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+}
+function atualizarEstabelecimento($nome,$descricao,$endereco,$id){
+    $conn = F_conect();
+    $sql = "update estabelecimento set nome='".$nome."' , descricao='".$descricao."', endereco='".$endereco."' where id='".$id."'";
+    if ($conn->query($sql) == TRUE) {
+        Alert("Sucesso!", "Estabelecimento atualizado com sucesso", "success");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

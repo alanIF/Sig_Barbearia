@@ -36,10 +36,15 @@ class EstabelecimentoController {
         require_once './Model/Estabelecimento.php';
         atualizarHorario($data,$horario,$id);
     }
+    public function atualizar_Estabelecimento($nome,$descricao,$endereco,$id){
+        require_once './Model/Estabelecimento.php';
+        atualizarEstabelecimento($nome,$descricao,$endereco,$id);
+    }
      public function excluirHorario($id){
         require ('./Model/Estabelecimento.php');
         excluirHorario($id);
         
         
     }
+   
 }

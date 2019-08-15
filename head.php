@@ -107,7 +107,7 @@
       <?php 
         if($tipo==1){
             echo ' <li class="nav-item">
-        <a class="nav-link" href="estabelecimento.php">
+        <a class="nav-link" href="EST_account.php">
           <i class="fas fa-fw fa-home"></i>
           <span>Meu Estabelecimento</span></a>
       </li>
