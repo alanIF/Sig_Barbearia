@@ -169,46 +169,4 @@ function findUserByEmail($email) {
 
 }
 
-// Função que envia email
-function enviarEmail($emailsender, $nome, $emaildestinatario, $assunto, $motivo, $mensagemRec, $resposta, $assinatura, $comcopia, $comcopiaoculta) {
-    try {
-        if (PATH_SEPARATOR == ";") {
-            $quebra_linha = "\r\n"; //Se for Windows
-        } else {
-            $quebra_linha = "\n"; //Se "não for Windows"
-        }
-        // Leitura das variaveis do email
-        $nome = strtoupper($nome);
-
-        $mensagem = "<p><b> OL&Aacute; " . $nome . ', SEGUE ABAIXO O RETORNO DO CONTATO ENVIADO NO NOSSO SITE.</b></p>';
-        $mensagem .= "<p style='color:gray;'> <b>MENSAGEM RECEBIDA:</b> <br /> Motivo: {$motivo}<br /> " . nl2br($mensagemRec) . "</p><br />";
-        $mensagem .= "<p style='color:black;'><b>SEGUE A RESPOSTA PARA O SEU CONTATO: </b><br />" . nl2br($resposta) . "</p>";
-        // Montagem da mensagem em um formato HTML
-        $mensagemHTML = "<font style='font-size:16px;'><p> <font style='color: red;'>
-                <i>Esse &eacute; um email autom&aacute;tico em resposta ao contato nos foi feito.</i></font></P>
-                {$mensagem}
-        <hr>
-        <p>{$assinatura}</font>";
-        // Montagem do cabeçalho do email
-        $headers = "MIME-Version: 1.1" . $quebra_linha;
-        $headers .= "Content-type: text/html; charset=iso-8859-1" . $quebra_linha;
-        $headers .= "From: " . $emailsender . $quebra_linha;
-        $headers .= "Cc: " . $comcopia . $quebra_linha;
-        $headers .= "Bcc: " . $comcopiaoculta . $quebra_linha;
-        $headers .= "Reply-To: " . $emailremetente . $quebra_linha;
-        // Condição para verificar se o email nao foi enviado
-        if (!mail($emaildestinatario, $assunto, $mensagemHTML, $headers, "-r" . $emailsender)) {
-            // Se o email nao foi enviado, alterasse a forma de envio
-            $headers .= "Return-Path: " . $emailsender . $quebra_linha;
-            // Condição que verifica ee novamente o email nao foi enviado
-            if (!mail($emaildestinatario, $assunto, $mensagemHTML, $headers)) {
-                // Se nao for enviado, exibe a mensagem de erro
-                return false;
-            } else {
-                return true;
-            }
-        }
-    } catch (Exception $exc) { //Se ocorrer alguma execeção
-        tratarExcecao($exc);
-    }
-}
+?>
