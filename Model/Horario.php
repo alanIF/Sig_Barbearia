@@ -21,6 +21,25 @@ function listarHorariosDisponiveis(){
    $conn->close();
    return $horarios;
 }
+function listarHorariosReservados($id_usuario){
+    require_once 'connect.php';
+    $conn = F_conect();
+    $result = mysqli_query($conn, "Select h.id id,h.dia dia,h.horario horario,(Select nome from usuario  where id=h.id_cliente )cliente  from horario h, estabelecimento e where h.id_estabelecimento=e.id and h.situacao='1' and e.id_usuario='".$id_usuario."'");
+    $i = 0;
+    $horarios= array();
+    if (mysqli_num_rows($result)) {
+        while ($row = $result->fetch_assoc()) {
+                $horarios[$i]['id'] = $row['id'];
+                $horarios[$i]['dia'] = $row['dia'];
+                $horarios[$i]['horario'] = $row['horario'];               
+                $horarios[$i]['cliente'] = $row['cliente'];               
+               
+                $i++;
+            }
+    }
+   $conn->close();
+   return $horarios;
+}
 function reservarHorario($id_horario,$id_usuario){
     require_once 'connect.php';
     $conn = F_conect();
@@ -29,6 +48,26 @@ function reservarHorario($id_horario,$id_usuario){
         if ($conn->query($sql) == TRUE) {
             echo "<script language='javascript' type='text/javascript'>"
                     . "alert('Horário reservado com sucesso!');";
+
+                        echo "</script>";
+                    echo "<script language='javascript' type='text/javascript'>
+                    window.location.href = 'javascript:window.history.go(-1);';
+                    </script>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $conn->close();
+}
+
+function confirmarHorario($id_horario){
+    require_once 'connect.php';
+    $conn = F_conect();
+    
+    $sql = "update horario set  situacao='2'  where id='".$id_horario."'";
+        if ($conn->query($sql) == TRUE) {
+            echo "<script language='javascript' type='text/javascript'>"
+                    . "alert('Confirmação do Horário realizada com sucesso!');";
 
                         echo "</script>";
                     echo "<script language='javascript' type='text/javascript'>

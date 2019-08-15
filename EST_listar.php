@@ -60,9 +60,14 @@
                                     if($dados[$i]['situacao']==0){
                                         echo "<tr class='alert alert-success'>";
                                         $situacao="Disponível";
-                                    }else{
-                                       echo "<tr class='alert alert-danger'>";
+                                    }
+                                    else if ($dados[$i]['situacao']==1){
+                                        echo "<tr class='alert alert-warning'>";
                                         $situacao="Reservado"; 
+                                    }
+                                    else{
+                                       echo "<tr class='alert alert-danger'>";
+                                        $situacao="Confirmado"; 
                                     }
                                     
                                     echo"<td>" . $dados[$i]['id'] . "</td>";

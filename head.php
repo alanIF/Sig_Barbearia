@@ -54,6 +54,15 @@
         else
           return false; 
       }
+      function confirmar_reserva(){
+        // só permitirá o envio se o usuário responder OK
+        var resposta = window.confirm("Deseja mesmo" + 
+                       " confirmar a reserva deste horário?");
+        if(resposta)
+          return true;
+        else
+          return false; 
+      }
     </script>
 </head>
 
@@ -98,11 +107,16 @@
       <?php 
         if($tipo==1){
             echo ' <li class="nav-item">
-        <a class="nav-link" href="EST_listar.php">
+        <a class="nav-link" href="estabelecimento.php">
           <i class="fas fa-fw fa-home"></i>
-          <span>Gerenciar Estabelecimento</span></a>
+          <span>Meu Estabelecimento</span></a>
       </li>
 ';
+            echo ' <li class="nav-item">
+        <a class="nav-link" href="EST_listar.php">
+          <i class="fas fa-fw fa-clock"></i>
+          <span>Horários</span></a>
+      </li>';
         }
         if($tipo==2){
             echo ' <li class="nav-item">

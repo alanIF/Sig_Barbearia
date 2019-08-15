@@ -16,9 +16,18 @@ class HorarioController {
         require_once './Model/Horario.php';
         return listarHorariosDisponiveis();
     }
+    public function listar_reservados($id_usuario){
+        require_once './Model/Horario.php';
+        return listarHorariosReservados($id_usuario);
+    }
     public function reservarHorario($id_horario,$id_usuario){
         require_once './Model/Horario.php';
         reservarHorario($id_horario,$id_usuario);
+
+    }
+     public function confirmarHorario($id_horario){
+        require_once './Model/Horario.php';
+        confirmarHorario($id_horario);
 
     }
     public function cancelarReservarHorario($id_horario,$id_usuario){
