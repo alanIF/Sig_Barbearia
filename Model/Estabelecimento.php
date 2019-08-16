@@ -52,6 +52,7 @@ function getEstabelecimento($id_usuario){
                 $estabelecimento[$i]['descricao'] = $row['descricao'];
                 $estabelecimento[$i]['endereco'] = $row['endereco'];
                 $estabelecimento[$i]['nome'] = $row['nome'];
+                $estabelecimento[$i]['id_usuario'] = $row['id_usuario'];
                 
                 $i++;
             }
@@ -70,6 +71,32 @@ function cadastrarHorario($data,$horario,$id_estabelecimento){
     }
 
     $conn->close();
+}
+function gerarHorario($data_inicial,$data_final,$hora_inicial,$hora_final,$tempo,$id_estabelecimento){
+    $conn = F_conect();
+
+    // percorre de um dia ate o outro
+    while (strtotime($data_inicial) <= strtotime($data_final)) {
+        $data_inicial = date ("Y-m-d", strtotime("+1 day", strtotime($data_inicial)));
+        $hora_inicial2=$hora_inicial;
+        // percorre da hora que ele selecionou ate a hora final
+        while (strtotime($hora_inicial2)<=strtotime($hora_final)){
+            
+            $sql = "INSERT INTO horario(dia, horario, situacao,id_estabelecimento)
+            VALUES('" . $data_inicial . "','" . $hora_inicial2 . "','0', '".$id_estabelecimento."' )";
+            if ($conn->query($sql) == TRUE) {
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+                return 0;
+            }
+            $string_t=$hora_inicial2." + ".$tempo." minutes";
+            $hora_inicial2 = date("H:i",strtotime($string_t));
+            
+        }
+    }
+    Alert("Horário Gerado!", "Seu horário foi gerado com sucesso!", "success");
+   
+   
 }
 function atualizarHorario($data,$horario,$id){
     $conn = F_conect();

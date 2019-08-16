@@ -45,8 +45,9 @@
                   </thead>
                   <tfoot>
                     <tr>
-                        <th colspan="6"><a href="EST_cadastrar.php"><i class="fa fa-plus-circle"></i></a></th>
-                     
+                        <th colspan="1"><a href="EST_cadastrar.php"><i class="fa fa-plus-circle"></i></a></th>
+                        <th colspan="4"></th>
+                        <th><a  href="HOR_gerar.php" class="btn btn-primary">Gerar Horários</a></th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -71,8 +72,8 @@
                                     }
                                     
                                     echo"<td>" . $dados[$i]['id'] . "</td>";
-                                    
-                                    echo"<td>" . $dados[$i]['dia'] . "</td>";
+                                   
+                                    echo"<td>" . date('d/m/Y',  strtotime($dados[$i]['dia'])) . "</td>";
                                     echo"<td>" . $dados[$i]['horario'] . "</td>";
                                     echo"<td>" . $situacao . "</td>";
                                     if($dados[$i]['cliente']==NULL){

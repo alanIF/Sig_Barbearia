@@ -27,7 +27,9 @@
                <?php 
                    require_once './Controller/EstabelecimentoController.php';
                    $objControl2= new EstabelecimentoController();
-                   $id_estabelecimento=$objControl2->getEstabelecimento($_SESSION['id_usuario']);
+                   $dados=$objControl2->getEstabelecimento($_SESSION['id_usuario']);
+                   $id_estabelecimento=$dados[0]['id_usuario'];
+                   
                ?>
               <!-- Project Card Example -->
               <div class="card shadow mb-4">
@@ -37,10 +39,10 @@
                 <div class="card-body">
                      <form class="user" action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" name="dia" class="form-control form-control-user" id="exampleInputEmail" placeholder="Data" required="">
+                    <input type="date" name="dia" class="form-control form-control-user" id="exampleInputEmail" placeholder="Data" required="">
                 </div>
                           <div class="form-group">
-                    <input type="text" name="horario" class="form-control form-control-user" id="exampleInputEmail" placeholder="Horário" required="">
+                              <input type="time" name="horario" class="form-control form-control-user" id="exampleInputEmail" placeholder="Horário" required="">
                 </div>
                 
                   <button type="submit" class="btn btn-primary btn-user btn-block" name="botao">Cadastrar</button>

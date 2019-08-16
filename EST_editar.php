@@ -56,10 +56,10 @@
                 <div class="card-body">
                      <form class="user" action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" name="dia" value="<?php echo $dados[0]['dia']; ?>" class="form-control form-control-user" id="exampleInputEmail" placeholder="Data" required="">
+                    <input type="date" name="dia" value="<?php echo $dados[0]['dia']; ?>" class="form-control form-control-user" id="exampleInputEmail" placeholder="Data" required="">
                 </div>
                           <div class="form-group">
-                    <input type="text" name="horario" value="<?php echo $dados[0]['horario']; ?>" class="form-control form-control-user" id="exampleInputEmail" placeholder="Horário" required="">
+                    <input type="time" name="horario" value="<?php echo $dados[0]['horario']; ?>" class="form-control form-control-user" id="exampleInputEmail" placeholder="Horário" required="">
                 </div>
                 
                   <button type="submit" class="btn btn-primary btn-user btn-block" name="botao">Atualizar</button>

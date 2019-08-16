@@ -32,6 +32,10 @@ class EstabelecimentoController {
         require_once './Model/Estabelecimento.php';
         cadastrarHorario($data,$horario,$id_estabelecimento);
     }
+    public function gerar($data_inicial,$data_final,$hora_inicial,$hora_final,$tempo,$id_estabelecimento){
+        require_once './Model/Estabelecimento.php';
+        gerarHorario($data_inicial,$data_final,$hora_inicial,$hora_final,$tempo,$id_estabelecimento);
+    }
     public function atualizar($data,$horario,$id){
         require_once './Model/Estabelecimento.php';
         atualizarHorario($data,$horario,$id);
