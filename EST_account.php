@@ -30,13 +30,13 @@
                 <div class="card-body">
                      <form class="user" action="" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" name="nome" value="<?php echo  $dados[0]["nome"];?>" class="form-control form-control-user" id="exampleInputEmail" placeholder="Nome" required="">
+                    <input type="text" name="nome" value="<?php echo  $dados[0]["nome"];?>" class="form-control form-control-user" id="exampleInputEmail" placeholder="Nome do Estabelecimento" required="">
                 </div>
                 <div class="form-group">
-                    <input type="text" name="descricao" value="<?php echo  $dados[0]["descricao"];?>"   class="form-control form-control-user" id="exampleInputEmail" placeholder="Email" required="">
+                    <input type="text" name="descricao" value="<?php echo  $dados[0]["descricao"];?>"   class="form-control form-control-user" id="exampleInputEmail" placeholder="Descrição" required="">
                 </div>
                   <div class="form-group">
-                    <input type="text" name="endereco"  value="<?php echo  $dados[0]["endereco"];?>"  class="form-control form-control-user" id="exampleInputEmail" placeholder="Telefone" required="">
+                    <input type="text" name="endereco"  value="<?php echo  $dados[0]["endereco"];?>"  class="form-control form-control-user" id="exampleInputEmail" placeholder="Endereço" required="">
                 </div>
                 
                   <button type="submit" class="btn btn-primary btn-user btn-block" name="botao">Atualizar</button>
