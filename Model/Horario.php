@@ -24,14 +24,15 @@ function listarHorariosDisponiveis(){
 function listarHorariosReservados($id_usuario){
     require_once 'connect.php';
     $conn = F_conect();
-    $result = mysqli_query($conn, "Select h.id id,h.dia dia,h.horario horario,(Select nome from usuario  where id=h.id_cliente )cliente  from horario h, estabelecimento e where h.id_estabelecimento=e.id and h.situacao='1' and e.id_usuario='".$id_usuario."'");
+    $result = mysqli_query($conn, "Select h.situacao situacao, h.id id,h.dia dia,h.horario horario,(Select nome from usuario  where id=h.id_cliente )cliente  from horario h, estabelecimento e where h.id_estabelecimento=e.id and h.situacao!= '0' and e.id_usuario='".$id_usuario."'");
     $i = 0;
     $horarios= array();
     if (mysqli_num_rows($result)) {
         while ($row = $result->fetch_assoc()) {
                 $horarios[$i]['id'] = $row['id'];
                 $horarios[$i]['dia'] = $row['dia'];
-                $horarios[$i]['horario'] = $row['horario'];               
+                $horarios[$i]['horario'] = $row['horario'];  
+                $horarios[$i]['situacao']= $row['situacao'];
                 $horarios[$i]['cliente'] = $row['cliente'];               
                
                 $i++;

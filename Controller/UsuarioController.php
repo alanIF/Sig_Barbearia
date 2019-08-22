@@ -32,7 +32,6 @@ class UsuarioController{
        $user = findUserByEmail($email);
 
        if($user[0]['nome'] != null){
-            Alert("Oba!", "Email enviado com sucesso!", "success");  
             $assunto = "SigBarber - Redefinir Senha";
 
             //Enviar o email
@@ -43,28 +42,34 @@ class UsuarioController{
 
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com'; //EX: smtp.meusite.com.br
-            $mail->SMTPAutoTLS = false; // Utiliza TLS Automaticamente se disponível
-            $mail->SMTPAuth = true; # Usar autenticação SMTP - Sim
-            $mail->Username = 'emanoel.ifrn@gmail.com';
-            $mail->Password = 'suasenha';
+
+            $mail->Username = 'katianesjs@gmail.com';
+            $mail->Password = 'katiane123';
             $mail->Port = 587;
+            $mail->SMTPAuth = true; # Usar autenticação SMTP - Sim
 
+            $secure = 'tls';
+            
+            $mail->SMTPSecure = $secure;
+
+            $mail->SMTPDebug = 2; 
             # Define o remetente (você)
-            $mail->From = "emanoel.ifrn@gmail.com"; # Seu e-mail
-            $mail->FromName = "Nome do Remetente"; // Seu nome
+            $mail->From = "katianesjs@gmail.com"; # Seu e-mail
+            $mail->FromName = "SigBarber"; // Seu nome
 
-            $mail->addAddress('emanoel.dantas@imd.ufrn.br', 'Emanoel'); //dados de quem recebe
+            $mail->addAddress($email, $user[0]["nome"]); //dados de quem recebe
             $mail->isHTML(true);
             $mail->CharSet = 'utf-8';
-
-            $mail->Subject = 'SigCQ - Recuperar Senha';
-            $mail->Body = "Este é o corpo da mensagem de teste, em <b>HTML</b>! :)"; //Email com HTML
+            $mail->WordWrap = 70;
+            
+            $mail->Subject = 'SigBarber- Recuperar Senha';
+            $mail->Body = "Você solicitou sua senha, sua senha é: ".$user[0]["senha"].""; //Email com HTML
             $mail->AltBody = 'Erro na interpretação HTML';  // Email sem HTML (por segurança)
 
             if ($mail->send()) {
-                echo 'Email enviado!!';
+                Alert("Sucesso!", "Email enviado com sucesso", "success");  
             } else {
-                echo 'Deu errado..' . $mail->ErrorInfo;
+                Alert("Ops!", "Error ao enviar email!".$mail->ErrorInfo." .", "danger");  
             }
             
        }else{
