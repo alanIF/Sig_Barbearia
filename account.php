@@ -37,8 +37,11 @@
                     <input type="email" name="email" value="<?php echo  $dados[0]["email"];?>"   class="form-control form-control-user" id="exampleInputEmail" placeholder="Email" required="">
                 </div>
                   <div class="form-group">
-                    <input type="text" name="telefone"  value="<?php echo  $dados[0]["telefone"];?>"  class="form-control form-control-user" id="exampleInputEmail" placeholder="Telefone" required="">
+                    <input type="text" id="telefone" name="telefone"  value="<?php echo  $dados[0]["telefone"];?>"  class="form-control form-control-user"  placeholder="Telefone" required="">
                 </div>
+				 <script type="text/javascript">
+						$("#telefone, #celular").mask("(00) 00000-0000");
+						</script>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                       <input type="password" name="senha"  value="<?php echo  $dados[0]["senha"];?>"  class="form-control form-control-user" id="exampleInputPassword" placeholder="Senha" required="">

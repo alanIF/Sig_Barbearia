@@ -17,7 +17,8 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 </head>
 
 <body class="bg-gradient-primary">
@@ -41,7 +42,11 @@
                     <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email" required="">
                 </div>
                   <div class="form-group">
-                    <input type="text" name="telefone" class="form-control form-control-user" id="exampleInputEmail" placeholder="Telefone" required="">
+                    <input type="text" name="telefone" class="form-control form-control-user "    id="telefone" placeholder="Telefone" required="">
+					  <script type="text/javascript">
+						$("#telefone, #celular").mask("(00) 00000-0000");
+						</script>
+        
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">

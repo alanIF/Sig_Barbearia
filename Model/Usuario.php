@@ -68,19 +68,33 @@ function testLogado() {
         header('Location: ./index.php');
     }
 }
+function verificarEmail($email) {
 
-function cadastrar($nome,$email,$senha,$telefone,$tipo) {
     $conn = F_conect();
-    $sql = "INSERT INTO usuario(nome, email, senha,telefone,tipo)
-            VALUES('" . $nome . "','" . $email . "','" . $senha . "', '".$telefone."','".$tipo."' )";
-    if ($conn->query($sql) == TRUE) {
-        Alert("Sucesso!", "Usuário cadastrado com sucesso", "success");
-        echo "<a href='./index.php'> Voltar a tela de login</a>";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+    $result = mysqli_query($conn, "SELECT email FROM `usuario` WHERE email='" . $email . "'");
 
-    $conn->close();
+    if (mysqli_num_rows($result)) {
+
+        echo "<script>alert('Já existe um e-mail cadastrado com essa conta.');</script>";
+        return false;
+    }
+    return true;
+}
+function cadastrar($nome,$email,$senha,$telefone,$tipo) {
+	$verificar= verificarEmail($email);
+	if($verificar==true){
+		$conn = F_conect();
+		$sql = "INSERT INTO usuario(nome, email, senha,telefone,tipo)
+				VALUES('" . $nome . "','" . $email . "','" . $senha . "', '".$telefone."','".$tipo."' )";
+		if ($conn->query($sql) == TRUE) {
+			Alert("Sucesso!", "Usuário cadastrado com sucesso", "success");
+			echo "<a href='./index.php'> Voltar a tela de login</a>";
+		} else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+
+		$conn->close();
+	}
 }
 function getUsuario($id_usuario){
     $conn = F_conect();
