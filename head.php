@@ -45,6 +45,7 @@
         else
           return false; 
       }
+     
       function cancelar(){
         // só permitirá o envio se o usuário responder OK
         var resposta = window.confirm("Deseja mesmo" + 

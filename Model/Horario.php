@@ -99,6 +99,25 @@ function cancelarReservarHorario($id_horario,$id_usuario){
 
         $conn->close();
 }
+function cancelarReservarHorario_estabelecimento($id_horario){
+    require_once 'connect.php';
+    $conn = F_conect();
+    
+    $sql = "update horario set id_cliente='null', situacao='0'  where id='".$id_horario."'";
+        if ($conn->query($sql) == TRUE) {
+            echo "<script language='javascript' type='text/javascript'>"
+                    . "alert('Reserva cancelada com sucesso!');";
+
+                        echo "</script>";
+                    echo "<script language='javascript' type='text/javascript'>
+                    window.location.href = 'javascript:window.history.go(-1);';
+                    </script>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $conn->close();
+}
 function listarHorariosMarcados($id_usuario){
     require_once 'connect.php';
     $conn = F_conect();

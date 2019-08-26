@@ -31,6 +31,10 @@
 
                                 <i class="fas fa-check fa-2x text-green-300"></i>
                                                 </a>
+                                                 <a onclick="return cancelar();" href="HOR_cancelar_reserva.php?id='.$dados[$i]['id'].'" class="btn btn-danger btn-circle btn-lg">
+
+                                <i class="fas fa-calendar-times fa-2x text-green-300"></i>
+                                                </a> 
                               </div>
                             </div>
                           </div>
@@ -73,8 +77,10 @@
                               </div>
                               <div class="col-auto">
 
-                                <a href=""><i class="fas fa-check fa-2x text-green-300"></i></a>
-                                              
+                                             <a onclick="return cancelar();" href="HOR_cancelar_reserva.php?id='.$dados[$i]['id'].'" class="btn btn-danger btn-circle btn-lg">
+
+                                <i class="fas fa-calendar-times fa-2x text-green-300"></i>
+                                                </a> 
                               </div>
                             </div>
                           </div>

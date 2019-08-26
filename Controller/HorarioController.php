@@ -35,6 +35,11 @@ class HorarioController {
         cancelarReservarHorario($id_horario,$id_usuario);
 
     }
+    public function cancelarReservarHorario_estabelecimento($id_horario){
+        require_once './Model/Horario.php';
+        cancelarReservarHorario_estabelecimento($id_horario);
+
+    }
     // lista os horarios marcados do usuario
     public function listar($id_usuario){
         require_once './Model/Horario.php';
