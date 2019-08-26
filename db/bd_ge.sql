@@ -6,6 +6,7 @@ create table usuario(
 	nome varchar(200) not null,
 	email varchar(200) not null,
 	senha varchar(200) not null,
+	documento text,
 	telefone text,
 	foto text,
 	tipo int,

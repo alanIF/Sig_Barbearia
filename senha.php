@@ -43,7 +43,9 @@
                     <div class="form-group">
                       <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Insira o endereço de email..." required>
                     </div>
-                    
+                    <div class="form-group">
+                      <input type="text" name="documento" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Insira o seu documento que você usou na hora do cadastro" required>
+                    </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block" name="botao">Redefinir Senha</button>
                   </form>
 
@@ -52,7 +54,7 @@
                        require_once 'Model/connect.php';   
                        require_once './Controller/UsuarioController.php';
                        $objControl = new UsuarioController();
-                       $objControl->redefinirSenha($_POST["email"]);
+                       $objControl->redefinirSenha($_POST["email"],$_POST["documento"]);
                     }
                   ?>
                   <hr>

@@ -80,12 +80,12 @@ function verificarEmail($email) {
     }
     return true;
 }
-function cadastrar($nome,$email,$senha,$telefone,$tipo) {
+function cadastrar($nome,$email,$senha,$telefone,$documento, $tipo) {
 	$verificar= verificarEmail($email);
 	if($verificar==true){
 		$conn = F_conect();
-		$sql = "INSERT INTO usuario(nome, email, senha,telefone,tipo)
-				VALUES('" . $nome . "','" . $email . "','" . $senha . "', '".$telefone."','".$tipo."' )";
+		$sql = "INSERT INTO usuario(nome, email, senha,telefone,documento, tipo)
+				VALUES('" . $nome . "','" . $email . "','" . $senha . "', '".$telefone."', '".$documento."'  ,'".$tipo."' )";
 		if ($conn->query($sql) == TRUE) {
 			Alert("Sucesso!", "Usuário cadastrado com sucesso", "success");
 			echo "<a href='./index.php'> Voltar a tela de login</a>";
@@ -106,7 +106,8 @@ function getUsuario($id_usuario){
             $nome=$row['nome'];
             $email=$row['email'];
             $senha=$row['senha'];
-            $telefone=$row['telefone'];                 
+            $telefone=$row['telefone'];
+            $documento=$row['documento'];
             }
 
                       }else{
@@ -126,13 +127,15 @@ function getUsuario($id_usuario){
             $usuario[$i]["email"]=$email;
             $usuario[$i]["senha"]=$senha;
             $usuario[$i]["telefone"]=$telefone;
+            $usuario[$i]["documento"]=$documento;
+            
             return $usuario;
 
 }
-function editarUsu($nome,$email,$senha,$telefone,$id) {
+function editarUsu($nome,$email,$senha,$telefone,$documento,$id) {
     $conn = F_conect();
     $sql = " UPDATE usuario SET  nome='" . $nome . "', email='" . $email . " ', senha='" .
-            $senha . "', telefone='".$telefone."' WHERE id= " . $id;
+            $senha . "', telefone='".$telefone."', documento='".$documento."' WHERE id= " . $id;
 
     if ($conn->query($sql) === TRUE) {
         Alert("Oba!", "Dados atualizados com sucesso", "success");
@@ -160,9 +163,9 @@ function excluirUsu($id) {
     $conn->close();
 }
 
-function findUserByEmail($email) {
+function findUserByEmail($email,$documento) {
     $conn = F_conect();
-    $result = mysqli_query($conn, "SELECT * FROM usuario WHERE email='".$email."'");
+    $result = mysqli_query($conn, "SELECT * FROM usuario WHERE email='".$email."' and documento='".$documento."'");
     $i = 0;
     $usuario = array();
     if (mysqli_num_rows($result) >=1){
@@ -172,14 +175,18 @@ function findUserByEmail($email) {
             $senha=$row['senha'];
             $telefone=$row['telefone'];                 
         }
+        
+        $usuario[$i]["nome"]=$nome;
+        $usuario[$i]["email"]=$email;
+        $usuario[$i]["senha"]=$senha;
+        $usuario[$i]["telefone"]=$telefone;
+        return $usuario;
+        $conn->close();
+
+    }else{
+        return null;
     }
 
-    $conn->close();
-    $usuario[$i]["nome"]=$nome;
-    $usuario[$i]["email"]=$email;
-    $usuario[$i]["senha"]=$senha;
-    $usuario[$i]["telefone"]=$telefone;
-    return $usuario;
 
 }
 

@@ -48,6 +48,9 @@
 						</script>
         
                 </div>
+                   <div class="form-group">
+                    <input type="text" name="documento" class="form-control form-control-user" id="exampleInputEmail" placeholder="Digite algum número de documento que te ajudará na hora que você esquecer sua senha." required="">
+                </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                       <input type="password" name="senha" class="form-control form-control-user" id="exampleInputPassword" placeholder="Senha" required="">
@@ -70,7 +73,7 @@
                         $tipo=2;
 
                         if( strcmp($_POST["senha"],$_POST['senhaR'])==0){
-                            $objControl->cadastrar($_POST["nome"], $_POST["email"], $_POST["senha"],$_POST["telefone"],$tipo);
+                            $objControl->cadastrar($_POST["nome"], $_POST["email"], $_POST["senha"],$_POST["telefone"],$_POST["documento"],$tipo);
                         }else{
                             Alert("ERROR!", "Senhas não coicidentes!","danger");
                         }

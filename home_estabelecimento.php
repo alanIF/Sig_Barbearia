@@ -8,10 +8,14 @@
                         $objControl2 = new HorarioController();
                         $dados=$objControl2->listar_reservados($_SESSION['id_usuario']);
                         $tamanho = count($dados);
+                        $data_atual= date("Y-m-d");
+
                         if ($tamanho > 0) {
                                                             echo '<div class="row">';
 
                             for ($i = 0; $i < $tamanho; $i++) {
+                                 if(strtotime($dados[$i]["dia"])>=strtotime($data_atual)){
+
                                                                 if($dados[$i]['situacao']==1){
 
                                 echo '<div class="col-xl-3 col-md-6 mb-4">
@@ -32,7 +36,10 @@
                           </div>
                         </div>
                      
-                                                                </div>';}
+                                                                </div>';
+                                
+                                                                }
+                                 }
                             }
                                                             echo '</div>';
 
@@ -47,14 +54,14 @@
                 </div>
                 <div class="card-body">
                    <?php
-                        require_once './Controller/HorarioController.php';
-                        $objControl2 = new HorarioController();
-                        $dados=$objControl2->listar_reservados($_SESSION['id_usuario']);
-                        $tamanho = count($dados);
+                        
+                       
                         if ($tamanho > 0) {
                             echo '<div class="row">';
 
                             for ($i = 0; $i < $tamanho; $i++) {
+                            if(strtotime($dados[$i]["dia"])>=strtotime($data_atual)){
+
                                 if($dados[$i]['situacao']==2){
                                 echo '<div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-success shadow h-100 py-2">
@@ -76,6 +83,7 @@
                                 </div>';
                                 
                                 }
+                            }
                             }
                                                             echo '</div>';
 

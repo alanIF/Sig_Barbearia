@@ -42,6 +42,9 @@
 				 <script type="text/javascript">
 						$("#telefone, #celular").mask("(00) 00000-0000");
 						</script>
+                                                <div class="form-group">
+                    <input type="text" name="documento" value="<?php echo  $dados[0]["documento"];?>" class="form-control form-control-user" id="exampleInputEmail" placeholder="Documento" required="">
+                </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                       <input type="password" name="senha"  value="<?php echo  $dados[0]["senha"];?>"  class="form-control form-control-user" id="exampleInputPassword" placeholder="Senha" required="">
@@ -61,7 +64,7 @@
                         $tipo=2;
 
                         if( strcmp($_POST["senha"],$_POST['senhaR'])==0){
-                            $objControl2->atualizar($_POST["nome"], $_POST["email"], $_POST["senha"],$_POST["telefone"],$_SESSION['id_usuario']);
+                            $objControl2->atualizar($_POST["nome"], $_POST["email"], $_POST["senha"],$_POST["telefone"],$_POST["documento"], $_SESSION['id_usuario']);
                           echo "<meta HTTP-EQUIV='refresh' CONTENT='1;URL='account.php'>";
 
                             
