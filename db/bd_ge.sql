@@ -43,4 +43,10 @@ create table horario(
 	primary key(id),
 	foreign key(id_estabelecimento) references estabelecimento(id)
 );
-
+create table mensagem(
+	id int auto_increment not null,
+	dia text,
+	texto text,
+	id_usuario int,
+	primary key(id)
+);
