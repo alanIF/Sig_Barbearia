@@ -77,7 +77,6 @@ function gerarHorario($data_inicial,$data_final,$hora_inicial,$hora_final,$tempo
 
     // percorre de um dia ate o outro
     while (strtotime($data_inicial) <= strtotime($data_final)) {
-        $data_inicial = date ("Y-m-d", strtotime("+1 day", strtotime($data_inicial)));
         $hora_inicial2=$hora_inicial;
         // percorre da hora que ele selecionou ate a hora final
         while (strtotime($hora_inicial2)<=strtotime($hora_final)){
@@ -93,6 +92,8 @@ function gerarHorario($data_inicial,$data_final,$hora_inicial,$hora_final,$tempo
             $hora_inicial2 = date("H:i",strtotime($string_t));
             
         }
+        $data_inicial = date ("Y-m-d", strtotime("+1 day", strtotime($data_inicial)));
+
     }
     Alert("Horário Gerado!", "Seu horário foi gerado com sucesso!", "success");
    
