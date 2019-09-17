@@ -41,10 +41,10 @@
                   </div>
                   <form class="user" action='' method='post' enctype="multipart/form-data">
                     <div class="form-group">
-                      <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Insira o endereço de email..." required>
+                      <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Insira o endereço de email" required>
                     </div>
                     <div class="form-group">
-                      <input type="text" name="documento" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Insira o seu documento que você usou na hora do cadastro" required>
+                      <input type="text" name="documento" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Insira o número do documento informado no cadastro" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="11" required>
                     </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block" name="botao">Redefinir Senha</button>
                   </form>

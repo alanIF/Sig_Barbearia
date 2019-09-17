@@ -49,7 +49,7 @@
         
                 </div>
                    <div class="form-group">
-                    <input type="text" name="documento" class="form-control form-control-user" id="exampleInputEmail" placeholder="Digite algum número de documento que te ajudará na hora que você esquecer sua senha." required="">
+                    <input type="text" name="documento" class="form-control form-control-user" id="exampleInputEmail" placeholder="Número de algum documento que ajudará a recuperar sua senha, caso você esqueça." onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="11" required="">
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
